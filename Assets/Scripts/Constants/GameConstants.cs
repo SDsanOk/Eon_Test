@@ -1,4 +1,7 @@
-﻿public class GameConstants
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+public class GameConstants
 {
     #region Time Constants
 
@@ -19,4 +22,10 @@
     public const float DefaultMovementSpeed = 5f;
     public const float DefaultBulletSpawnOffset = 0.6f;
     public const float BonusSpawnCheckOccupancyRadius = 0.4f;
+
+    public static Dictionary<int, Color> PlayerNumberColorsMapping = new Dictionary<int, Color>
+    {
+        [1] = Color.green,
+        [2] = Color.red,
+    };
 }

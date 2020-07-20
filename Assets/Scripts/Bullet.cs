@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour
     private float speed;
     private int _damage = GameConstants.DefaultBulletDamage;
 
-    // Start is called before the first frame update
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();

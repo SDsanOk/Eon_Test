@@ -16,10 +16,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject tankPrefab;
 
-    // Start is called before the first frame update
     void Start()
     {
         timeManager = TimeManagerFactory.GetTimeManager();
+        timeManager.FlushScheduledActions();
 
         InitiateEagles();
 
@@ -69,9 +69,9 @@ public class GameManager : MonoBehaviour
         });
     }
 
-    private void SubscribeOnDestroyEvent<T>(T gameObject, Hp.OnDestroyDelegate destroyDelegate) where T: MonoBehaviour
+    private void SubscribeOnDestroyEvent<T>(T _gameObject, Hp.OnDestroyDelegate destroyDelegate) where T: MonoBehaviour
     {
-        var hpComponent = gameObject.gameObject.GetComponent<Hp>();
+        var hpComponent = _gameObject.gameObject.GetComponent<Hp>();
         if (hpComponent != null)
         {
             hpComponent.OnDestroy += destroyDelegate;
@@ -88,9 +88,9 @@ public class GameManager : MonoBehaviour
         SubscribeOnDestroyEvent(tank, Tank_OnDestroy);
     }
 
-    private void Tank_OnDestroy(GameObject gameObject)
+    private void Tank_OnDestroy(GameObject _gameObject)
     {
-        var tank = gameObject.GetComponent<Tank>();
+        var tank = _gameObject.GetComponent<Tank>();
         var playerNumber = tank.PlayerNumber;
         timeManager?.ExecuteAfterCertainTime(GameConstants.TankRespawnCooldown, () =>
         {
@@ -98,9 +98,9 @@ public class GameManager : MonoBehaviour
         });
     }
 
-    private void Eagle_OnOnDestroy(GameObject gameobject)
+    private void Eagle_OnOnDestroy(GameObject _gameobject)
     {
-        var looser = gameobject.GetComponent<Eagle>().PlayerNumber;
+        var looser = _gameobject.GetComponent<Eagle>().PlayerNumber;
         Debug.Log($"Player {looser} has lost! Gz to winner.");
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

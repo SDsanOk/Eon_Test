@@ -13,7 +13,6 @@ public class Tank : MonoBehaviour, IBonusTarget
     private PresentationController _presentationController;
     private Vector2 _shootDirection;
 
-    // Start is called before the first frame update
     void Start()
     {
         _movementController = GetComponent<MovementController>();
@@ -22,8 +21,7 @@ public class Tank : MonoBehaviour, IBonusTarget
 
         _presentationController.Init(PlayerNumber);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetAxisRaw(FireAxisName) != 0)

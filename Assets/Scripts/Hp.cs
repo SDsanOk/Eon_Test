@@ -2,7 +2,7 @@
 
 public class Hp : MonoBehaviour
 {
-    public delegate void OnDestroyDelegate(GameObject gameObject);
+    public delegate void OnDestroyDelegate(GameObject _gameObject);
 
     public event OnDestroyDelegate OnDestroy;
 
@@ -18,13 +18,11 @@ public class Hp : MonoBehaviour
     private PresentationController _presentationController;
     public bool IsInvulnerable => _isInvulnerable;
 
-    // Start is called before the first frame update
     void Start()
     {
         _presentationController = gameObject.GetComponent<PresentationController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         _presentationController?.SetShieldPresentation(healthPoints == GameConstants.HpValueAfterPickingUpArmorBonus);
@@ -38,6 +36,11 @@ public class Hp : MonoBehaviour
     public void SetHp(int hp)
     {
         healthPoints = hp;
+    }
+
+    public int GetHp()
+    {
+        return healthPoints;
     }
 
     public void TakeDamage(int damage)

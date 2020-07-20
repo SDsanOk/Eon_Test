@@ -7,7 +7,7 @@ public class BonusManager : MonoBehaviour
     [SerializeField] private GameObject BonusPrefab;
 
     private TimeManager timeManager;
-    // Use this for initialization
+
     void Start()
     {
         timeManager = TimeManagerFactory.GetTimeManager();

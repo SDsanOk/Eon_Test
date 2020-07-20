@@ -4,7 +4,7 @@ using System.Linq;
 
 public class TimeManager
 {
-    private readonly Dictionary<Action, float> _scheduledActions = new Dictionary<Action, float>();
+    private Dictionary<Action, float> _scheduledActions = new Dictionary<Action, float>();
 
     public void Tick(float time)
     {
@@ -39,5 +39,10 @@ public class TimeManager
     public void ExecuteAfterCertainTime(float time, Action action)
     {
         _scheduledActions.Add(action, time);
+    }
+
+    public void FlushScheduledActions()
+    {
+        _scheduledActions = new Dictionary<Action, float>();
     }
 }

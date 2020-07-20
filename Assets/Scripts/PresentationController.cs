@@ -3,11 +3,6 @@ using UnityEngine;
 
 public class PresentationController : MonoBehaviour
 {
-    private Dictionary<int, Color> _playerNumberColorsMapping = new Dictionary<int, Color>
-    {
-        [1] = Color.green,
-        [2] = Color.red,
-    };
     SpriteRenderer _spriteRenderer;
     private Animator _animator;
     [SerializeField]
@@ -21,7 +16,7 @@ public class PresentationController : MonoBehaviour
 
     public void Init(int playerNumber)
     {
-        if (_playerNumberColorsMapping.TryGetValue(playerNumber, out var color))
+        if (GameConstants.PlayerNumberColorsMapping.TryGetValue(playerNumber, out var color))
         {
             _spriteRenderer.color = color;
         }

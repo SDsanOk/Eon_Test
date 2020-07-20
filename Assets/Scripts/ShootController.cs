@@ -4,12 +4,11 @@ public class ShootController : MonoBehaviour
 {
     [SerializeField]
     private GameObject _bulletPrefab;
-    [SerializeField] private float _shootCooldown = GameConstants.DefaultShootCooldown;
+    private float _shootCooldown = GameConstants.DefaultShootCooldown;
     private float _bulletSpeed = GameConstants.DefaultBulletSpeed;
     private bool _canShoot;
     private TimeManager _timeManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         _timeManager = TimeManagerFactory.GetTimeManager();
